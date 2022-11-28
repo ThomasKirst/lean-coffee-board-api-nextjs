@@ -30,4 +30,8 @@ export default async function handler(request, response) {
 
     response.status(200).json({ message: 'question updated' });
   }
+
+  if (request.method === 'OPTIONS') {
+    return response.status(200).send('ok');
+  }
 }
