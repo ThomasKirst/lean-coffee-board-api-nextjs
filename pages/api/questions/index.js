@@ -14,4 +14,8 @@ export default async function handler(request, response) {
 
     return response.status(201).json(newCard);
   }
+
+  if (method === 'OPTIONS') {
+    return res.status(200).send('ok');
+  }
 }
