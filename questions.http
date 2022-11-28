@@ -1,0 +1,35 @@
+
+# @name createQuestion
+POST http://localhost:3000/api/questions HTTP/1.1
+content-type: application/json
+
+{
+  "name": "Thomas",
+  "text": "When, how, and why?"
+}
+
+###
+
+GET http://localhost:3000/api/questions
+content-type: application/json
+
+###
+@cardId = {{createQuestion.response.body._id}}
+GET http://localhost:3000/api/questions/{{cardId}}
+content-type: application/json
+
+###
+
+@cardId = {{createQuestion.response.body._id}}
+DELETE http://localhost:3000/api/questions/{{cardId}}
+content-type: application/json
+
+###
+@cardId = {{createQuestion.response.body._id}}
+PUT http://localhost:3000/api/questions/{{cardId}} HTTP/1.1
+content-type: application/json
+
+{
+  "name": "Thomas Kirst",
+  "text": "When, how, and why?"
+}
