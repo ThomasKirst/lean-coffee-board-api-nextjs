@@ -23,12 +23,16 @@ export default async function handler(request, response) {
   if (request.method === 'PUT') {
     const id = request.query.id;
 
-    await Question.findByIdAndUpdate(id, {
-      text: request.body.text,
-      name: request.body.name,
-    });
+    const result = await Question.findByIdAndUpdate(
+      id,
+      {
+        text: request.body.text,
+        name: request.body.name,
+      },
+      { returnDocument: 'after' }
+    );
 
-    response.status(200).json({ message: 'question updated' });
+    response.status(200).json(result);
   }
 
   if (request.method === 'OPTIONS') {
