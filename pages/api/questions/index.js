@@ -16,7 +16,6 @@ export default async function handler(request, response) {
   }
 
   if (request.method === 'OPTIONS') {
-    console.log('CORS PREFLIGHT REACHED');
-    return res.status(200).send('ok');
+    return response.status(200).send('ok');
   }
 }
