@@ -32,9 +32,31 @@ export default function Home() {
   return (
     <main>
       <h1>Lean Coffee Board API</h1>
-      <h2>GET Questions</h2>
-      <p>API Route:<br />{`https://lean-coffee-board-api-nextjs.vercel.app/api/questions`}</p>
+      <h2>GET questions</h2>
+      <p>GET API Route:<br />{`https://lean-coffee-board-api-nextjs.vercel.app/api/questions`}</p>
       <pre>{JSON.stringify(questions, null, 2)}</pre>
+      <h3>How to include the fetch call in your React / Next App</h3>
+      <p>You can write a function getQuestions() or getNotes() which encapsulates the fetch call:</p>
+      <pre>
+        {`
+    async function getQuestions() {
+      const response = await fetch(
+        'https://lean-coffee-board-api-nextjs.vercel.app/api/questions'
+      );
+      const questionList = await response.json();
+      setQuestions(questionList); // update of a state variable (or thoughts, notes, cards, etc.)
+    }
+        `}
+      </pre>
+      <p>Further on you will need to include that function in a hook:</p>
+      <pre>
+        {`
+  useEffect(() => {
+    getQuestions();
+  }, []);
+        `}
+      </pre>
+      <p>We leave the function getQuestions() outside because we might want to use that function from another place later on (revalidation).</p>
       <h2>POST a question</h2>
       <p>POST API Route: https://lean-coffee-board-api-nextjs.vercel.app/api/questions</p>
       <p>The POST route needs three pieces of information which we can add as a second argument to the fetch function</p>
@@ -56,6 +78,9 @@ export default function Home() {
         `}
       </pre>
       <button onClick={postCard}>Try it out and observe the network tab in your browser</button>
+      <p>Keep in mind: when you POST a new question / card your frontend will not update automatically straight away.</p>
+      <p>You will need to reload your page in order to see the new item displayed which is not favorable.</p>
+      <p>In this case we want to be able to call getQuestions() again for our state update. The same will be true for our DELETE function on which we will have a look now.</p>
       <h2>DELETE a question</h2>
       <p>
         For deleting a card we need to pass the id of the card to the URI string:
