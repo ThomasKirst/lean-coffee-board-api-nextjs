@@ -61,7 +61,7 @@ export default function Home() {
         For deleting a card we need to pass the id of the card to the URI string:
       </p>
       <pre>{`https://lean-coffee-board-api-nextjs.vercel.app/api/questions/<QUESTION_ID>`}</pre>
-      <p>Additionally, we will need to add the HTTP method "DELETE" in the option object for our fetch call.</p>
+      <p>Additionally, we will need to add the HTTP method <i>DELETE</i> in the option object for our fetch call.</p>
       <pre>
         {`
     async function removeQuestion(id) {
@@ -78,7 +78,7 @@ export default function Home() {
       <p>In order to update a question we need to combine our knowledge up to this point.</p>
       <ul>
         <li>Which HTTP method do we want to use for UPDATE? ➡️ It is <strong>PUT</strong></li>
-        <li>How do we "address" the specific question in our URL? ➡️ We will use the same URL as for the DELETE request.</li>
+        <li>How do we &quot;address&quot; the specific question in our URL? ➡️ We will use the same URL as for the DELETE request.</li>
         <li>What do we send in the HTTP request body? ➡️ Well, we want to make changes to the properties <i>name</i> and <i>text</i>.</li>
       </ul>
       <p>Finally, we put this altogether and formulate the request:</p>
