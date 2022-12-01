@@ -79,7 +79,7 @@ export default function Home() {
       <ul>
         <li>Which HTTP method do we want to use for UPDATE? ➡️ It is <strong>PUT</strong></li>
         <li>How do we "address" the specific question in our URL? ➡️ We will use the same URL as for the DELETE request.</li>
-        <li>What do we send in the HTTP request body ➡️ Well, we want to make changes to the properties <i>name</i> and <i>text</i>.</li>
+        <li>What do we send in the HTTP request body? ➡️ Well, we want to make changes to the properties <i>name</i> and <i>text</i>.</li>
       </ul>
       <p>Finally, we put this altogether and formulate the request:</p>
       <pre>
